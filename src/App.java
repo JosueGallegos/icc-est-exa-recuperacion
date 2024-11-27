@@ -79,13 +79,16 @@ public class App {
                 buscarYMostrar(personas, controller, "Miguel");
         }
 
+        // itera sobre el arreglo persona 
+        // y para cada objeto persona e imprime su nombre y edad
         private static void imprimirPersonas(Persona[] personas) {
                 for (Persona p : personas) {
                 System.out.println("Nombre: " + p.getNombre() + ", Edad: " + p.getEdad());
                 }
                 System.out.println();
         }
-
+        //identifica en tipo de criterio si es String o Integer,si es  Integer llama al buscarPorEdad 
+        // y si es un String llama a buscarPorNombre.
         private static void buscarYMostrar(Persona[] personas, PersonaController controller, Object criterio) {
                 int pos;
                 if (criterio instanceof Integer) {
