@@ -1,4 +1,5 @@
 
+import Controllers.PersonaController;
 import Models.Persona;
 
 public class App {
@@ -61,5 +62,42 @@ public class App {
                 // Si encontró a la persona en el arreglo de personas los datos de dicha persona
                 // y su posición
                 // Si no encontró a la persona en el arreglo de personas
+
+
+                PersonaController controller = new PersonaController();
+
+       
+                controller.ordenarPorEdadDescendente(personas);
+                imprimirPersonas(personas);
+                buscarYMostrar(personas, controller, 25);
+                buscarYMostrar(personas, controller, 70);
+
+        
+                controller.ordenarPorNombreAscendente(personas);
+                imprimirPersonas(personas);
+                buscarYMostrar(personas, controller, "Anais");
+                buscarYMostrar(personas, controller, "Miguel");
+        }
+
+        private static void imprimirPersonas(Persona[] personas) {
+                for (Persona p : personas) {
+                System.out.println("Nombre: " + p.getNombre() + ", Edad: " + p.getEdad());
+                }
+                System.out.println();
+        }
+
+        private static void buscarYMostrar(Persona[] personas, PersonaController controller, Object criterio) {
+                int pos;
+                if (criterio instanceof Integer) {
+                pos = controller.buscarPorEdad(personas, (int) criterio);
+                } else {
+                pos = controller.buscarPorNombre(personas, (String) criterio);
+                }
+
+                if (pos != -1) {
+                System.out.println("Encontrado: " + personas[pos].getNombre() + ", Edad: " + personas[pos].getEdad() + " en la posición " + pos);
+                } else {
+                System.out.println("No encontrado: " + criterio);
+                }
         }
 }
